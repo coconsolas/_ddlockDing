@@ -130,7 +130,7 @@ pre::before {
 /* 타이핑된 글자만 보이게 함 */
 .revealed {
    color: var(--primary-color) !important; /* 기본 글자색 */
-   /* text-shadow: 0 0 10px var(--primary-color) !important; */
+   text-shadow: 0 0 10px var(--primary-color) !important;
    display: inline;
 }
 
@@ -138,7 +138,7 @@ pre::before {
 .char {
    display: inline; /* inline-block 대신 inline 사용 */
    color: transparent;
-   text-shadow: none !important;
+   text-shadow: none;
 }
 
 
