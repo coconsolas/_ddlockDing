@@ -1,7 +1,7 @@
 /* [핵심] 여기서 색상 테마를 자유자재로 변경하세요! */
 :root {
    /* RGB 숫자만 변수에 저장 (쉼표로 구분) */
-   --rgb-value: 255, 51, 51;
+   /* --rgb-value: 255, 51, 51; */
    --primary-color: rgb(var(--rgb-value));
 
    /* hex 코드 대신 rgb 숫자로 관리하면 더 정교한 제어가 가능하지만,
@@ -50,6 +50,7 @@ pre {
    font-weight: bold;
    font-size: 16px;
    color: var(--primary-color);
+   text-align: center;
    text-shadow: 0 0 5px var(--primary-color);
    position: relative;
    display: inline-block;
@@ -57,7 +58,7 @@ pre {
    padding: 5px;
    
    /* 재생 시간을 0.6s로 단축하여 매우 빠르게 치직거림 */
-   animation: glitch-color 1s infinite steps(1);
+   /* animation: glitch-color 1s infinite steps(1); */
 }
 
 pre::before {
@@ -72,7 +73,7 @@ pre::before {
    background: var(--bg-dark);
    
    /* 0.6s 주기로 아주 빠르게 찢어짐 */
-   animation: glitch-horizontal 1s infinite steps(1);
+   /* animation: glitch-horizontal 1s infinite steps(1); */
    opacity: 0.9;
    z-index: -1;
 
@@ -230,6 +231,7 @@ pre::before {
 
 div.quotes {
    text-align: center;
+   margin: .5em 0;
    /* display: flex; */
    /* justify-content: center; */
 }

@@ -18,6 +18,7 @@
    100% { text-shadow: 0 0 transparent; }
 }
 
+
 @keyframes blinker {
    50% {
       opacity: 0;
@@ -58,4 +59,84 @@
 
 @keyframes blink-wrap {
    50% { opacity: 0; }
+}
+
+
+/* pocket */
+@keyframes glitch-drip {
+   0%   { clip-path: inset(0 0 100% 0); transform: translate(0, 0); }
+   20%  { clip-path: inset(0 0 60% 0);  transform: translate(2px, 3px); }
+   40%  { clip-path: inset(0 0 30% 0);  transform: translate(-2px, 5px); }
+   60%  { clip-path: inset(0 0 10% 0);  transform: translate(3px, 2px); }
+   80%  { clip-path: inset(0 0 0% 0);   transform: translate(0, 0); }
+   100% { clip-path: inset(0 0 0% 0);   transform: translate(0, 0); }
+}
+
+@keyframes glitch-poison {
+   0%   { text-shadow: 0 0 0 transparent; }
+   20%  { text-shadow: 4px 2px 0 #39ff14, -4px -2px 0 #8b00ff; }
+   40%  { text-shadow: -6px 4px 0 #39ff14, 6px -4px 0 #8b00ff; }
+   60%  { text-shadow: 2px -3px 8px #39ff1488, -2px 3px 8px #8b00ff88; }
+   80%  { text-shadow: 0 0 20px #39ff1444; }
+   100% { text-shadow: 0 0 0 transparent; }
+}
+
+@keyframes corrode {
+   0%   { opacity: 1; filter: brightness(1) hue-rotate(0deg); }
+   15%  { opacity: 0.6; filter: brightness(1.4) hue-rotate(60deg); }
+   30%  { opacity: 0.9; filter: brightness(0.8) hue-rotate(120deg); }
+   50%  { opacity: 0.4; filter: brightness(1.6) hue-rotate(90deg); }
+   70%  { opacity: 1;   filter: brightness(1) hue-rotate(0deg); }
+   100% { opacity: 1;   filter: brightness(1) hue-rotate(0deg); }
+}
+
+
+/* venetor */
+@keyframes glitch-holy {
+   0%   { text-shadow: 0 0 5px #fff8dc; opacity: 1; }
+   10%  { text-shadow: 0 -20px 30px #fff8dc, 0 20px 30px #d4af37; opacity: 0.8; }
+   20%  { text-shadow: 0 0 60px #ffffff; opacity: 1; }
+   30%  { text-shadow: 2px 0 #d4af37, -2px 0 #fff8dc; }
+   100% { text-shadow: 0 0 5px #fff8dc; opacity: 1; }
+}
+
+@keyframes glitch-scan {
+   0%   { clip-path: inset(0 0 100% 0); }
+   30%  { clip-path: inset(0 0 0% 0); transform: translate(0, 2px); }
+   60%  { clip-path: inset(0 0 0% 0); transform: translate(0, -2px); }
+   80%  { clip-path: inset(0 0 0% 0); transform: translate(1px, 0); }
+   100% { clip-path: inset(0 0 0% 0); transform: translate(0, 0); }
+}
+
+@keyframes glitch-judgement {
+   0%   { filter: brightness(1); }
+   5%   { filter: brightness(4) contrast(2); }
+   6%   { filter: brightness(1); }
+   50%  { filter: brightness(1.1) sepia(0.2); }
+   51%  { filter: brightness(3) contrast(2); }
+   52%  { filter: brightness(1); }
+   100% { filter: brightness(1); }
+}
+
+/* shiv - 기존 좌우 glitch */
+.char-shiv pre {
+   animation: glitch-color 1s infinite steps(1);
+}
+.char-shiv pre::before {
+   animation: glitch-horizontal 1s infinite steps(1);
+}
+
+/* 두번째 캐릭터 - 독 느낌 */
+.char-pocket pre {
+   animation: glitch-drip 2s infinite, corrode 3s infinite;
+}
+.char-pocket pre::before {
+   animation: corrode 2s infinite steps(1);
+}
+
+.char-venator pre {
+   animation: glitch-holy 4s infinite, glitch-judgement 7s infinite;
+}
+.char-venator pre::before {
+   animation: glitch-scan 4s infinite steps(1);
 }

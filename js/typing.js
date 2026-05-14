@@ -1,21 +1,13 @@
-// const _character_info = {
-//    ascii_art: `  
-//   ██████  ██░ ██  ██▓ ██▒   █▓
-// ▒██    ▒ ▓██░ ██▒▓██▒▓██░   █▒
-// ░ ▓██▄   ▒██▀▀██░▒██▒ ▓██  █▒░
-//   ▒   ██▒░▓█ ░██ ░██░  ▒██ █░░
-// ▒██████▒▒░▓█▒░██▓░██░   ▒▀█░  
-// ▒ ▒▓▒ ▒ ░ ▒ ░░▒░▒░▓     ░ ▐░  
-// ░ ░▒  ░ ░ ▒ ░▒░ ░ ▒ ░   ░ ░░  
-// ░  ░  ░   ░  ░░ ░ ▒ ░     ░░  
-//       ░   ░  ░  ░ ░        ░  
-//                           ░   `
-// };
-// const ascii_ele = document.querySelector("pre");
-// ascii_ele.dataset.text = _character_info.ascii_art;
-// ascii_ele.dataset.textContent = _character_info.ascii_art;
+const ascii_ele = document.querySelector("pre");
+ascii_ele.dataset.text = currentChar.ascii_art;
+ascii_ele.textContent = currentChar.ascii_art;
+
+document.documentElement.style.setProperty('--rgb-value', currentChar.color);
 
 const container = document.getElementById("stats-container");
+document.querySelector("h1").innerHTML = currentChar.name;
+container.innerHTML = currentChar.characterInfo;
+document.body.classList.add(`char-${paramChar}`);
 
 function prepareTyping(element) {
    const nodes = [];
@@ -25,16 +17,6 @@ function prepareTyping(element) {
       nodes.push(node);
    }
 
-   // const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
-   // const nodes = [];
-   // let node;
-   // while (node = walker.nextNode()) {
-   //    // quotes 클래스 안의 텍스트는 스킵
-   //    if (node.parentElement.closest('.quotes')) return;
-   //    nodes.push(node);
-   // }
-
-   
 
    nodes.forEach(textNode => {
       const text = textNode.nodeValue;
@@ -116,17 +98,18 @@ function type() {
       setTimeout(type, delay);
    } else {
       // 타이핑 완료 - 커서를 마지막 글자 위에 올림
-      const lastChar = allChars[allChars.length - 1];
-      cursor.remove(); // 기존 커서 제거
+      // const lastChar = allChars[allChars.length - 1];
+      const lastChar = allChars[allChars.length];
+      // cursor.remove(); // 기존 커서 제거
       
       lastChar.style.position = 'relative';
       lastChar.appendChild(cursor);
       cursor.style.position = 'absolute';
       cursor.style.top = '0';
-      cursor.style.left = '-2px';
+      cursor.style.left = '0';
       cursor.style.width = lastChar.offsetWidth + 'px';
       cursor.style.height = '100%';
-      cursor.style.opacity = '0.5'; // 글자가 비쳐보이게
+      // cursor.style.opacity = '0.5'; // 글자가 비쳐보이게
    }
 }
 
