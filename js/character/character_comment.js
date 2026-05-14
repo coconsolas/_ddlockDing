@@ -85,6 +85,30 @@ const _character_info = {
     `,
     color: '138, 0, 224'
   },
+
+  doorman: {
+    name: 'DOORMAN',
+    ascii_art: `
+    //    ) ) //   ) ) //   ) ) //   ) )  /|    //| |     // | |     /|    / / 
+   //    / / //   / / //   / / //___/ /  //|   // | |    //__| |    //|   / /  
+  //    / / //   / / //   / / / ___ (   // |  //  | |   / ___  |   // |  / /   
+ //    / / //   / / //   / / //   | |  //  | //   | |  //    | |  //  | / /    
+//____/ / ((___/ / ((___/ / //    | | //   |//    | | //     | | //   |/ /     
+    `,
+    characterInfo: `
+      <div>[STATUS: <span class="blink">GOD?</span>]</div>
+      <div>[WEAPON: SERVICE WITH A SMILE]</div>
+      <br />
+      <div>> 1. CALL BELL</div>
+      <div>> 2. DOORWAY</div>
+      <div>> 3. LUGGAGE CART</div>
+      <div>> 4. HOTEL GUEST</div>
+      <br />
+      <div>[ADDITIONAL INFO: UNKNOWN]</div>
+      <div class="quotes"><b>CHECKING IN.</b></div>
+    `,
+    color: `212, 175, 55`
+  }
 };
 
 const currentChar = _character_info[paramChar] || { name: '???', message: '누구세요?', color: '#ccc' };
