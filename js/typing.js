@@ -8,7 +8,7 @@ const container = document.getElementById("stats-container");
 document.querySelector("h1").innerHTML = currentChar.name;
 container.innerHTML = currentChar.characterInfo;
 document.body.classList.add(`char-${paramChar}`);
-document.querySelector(".system-msg").innerHTML = `SYSTEM OVERRIDE: DEADLOCK_PROTOCOL_${currentChar.name}.EXE`;
+document.querySelector(".system-msg").innerHTML = `SYSTEM OVERRIDE: YCODING_DEADLOCK_PROTOCOL_${currentChar.name}.EXE`;
 
 function prepareTyping(element) {
    const nodes = [];
