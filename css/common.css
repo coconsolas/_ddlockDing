@@ -101,8 +101,22 @@ pre::before {
 }
 
 .stats {
-   padding: 1em .5em;
+   height: 0;
+   padding: 0 .5em; /* 상하 padding 0으로 시작 */
    border-top: 1px solid var(--primary-color);
+}
+.stats.active {
+   padding: 1em .5em; /* 타이핑 시작 시 복구 */
+}
+
+.stats div {
+   line-height: 0;
+   overflow: hidden;
+   transition: line-height 0.1s ease;
+}
+
+.stats div:has(.revealed) {
+   line-height: 1.6;
 }
 
 .stats div, .stats span {
@@ -201,6 +215,7 @@ pre::before {
    width: 8px;
    height: 1.1em;
    background: var(--primary-color);
+   margin-left: -8px; /* 커서 너비만큼 당겨서 공간 차지 안 하게 */
    vertical-align: text-bottom; /* 기준선을 텍스트 바닥에 맞춤 */
    margin-left: 2px;
    animation: blinker 0.7s step-end infinite;
@@ -209,4 +224,12 @@ pre::before {
    line-height: 1;
    position: absolute;
    pointer-events: none;
+
+   
+}
+
+div.quotes {
+   text-align: center;
+   /* display: flex; */
+   /* justify-content: center; */
 }
