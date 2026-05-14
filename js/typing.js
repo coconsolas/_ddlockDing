@@ -50,7 +50,7 @@ function type() {
 
       // 현재 출력된 글자가 무엇인지 확인
       const currentChar = char.textContent;
-      let delay = 200; // 기본 속도
+      let delay = 120; // 기본 속도
 
       // 특정 문자일 때 딜레이 추가
       if (currentChar === ',' || currentChar === ':') {
