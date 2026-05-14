@@ -1,0 +1,212 @@
+/* [핵심] 여기서 색상 테마를 자유자재로 변경하세요! */
+:root {
+   /* RGB 숫자만 변수에 저장 (쉼표로 구분) */
+   --rgb-value: 255, 51, 51;
+   --primary-color: rgb(var(--rgb-value));
+
+   /* hex 코드 대신 rgb 숫자로 관리하면 더 정교한 제어가 가능하지만,
+      단순하게 가려면 아래처럼 변수를 그림자 속성에 직접 넣으세요. */
+   --bg-dark: #050505;
+   --container-bg: rgba(20, 0, 0, 0.85);
+   --font-main: "Courier New", '바탕체', Courier, monospace;
+}
+
+body {
+   background-color: var(--bg-dark);
+   color: var(--primary-color);
+   font-family: var(--font-main);
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   height: 100vh;
+   margin: 0;
+   /* 텍스트 글로우 연동 */
+   text-shadow: 0 0 10px var(--primary-color);
+
+   -webkit-user-select: none;  /* Safari */
+   -ms-user-select: none;      /* IE 10+ */
+   user-select: none;          /* 표준 속성 (Chrome, Firefox 등) */
+}
+
+img {
+   -webkit-user-drag: none;
+   pointer-events: none; /* 클릭 이벤트 자체를 무시하게 할 수도 있습니다 */
+}
+
+h1 {
+   margin: 0;
+   letter-spacing: 10px;
+   /* 제목 하단 선 연동 */
+   border-bottom: 2px solid var(--primary-color);
+   padding-bottom: 5px;
+   text-align: center;
+}
+
+pre {
+   font-family: "Consolas", "Monaco", "Courier New", monospace !important;
+   line-height: 1.0;
+   letter-spacing: 0;
+   font-weight: bold;
+   font-size: 16px;
+   color: var(--primary-color);
+   text-shadow: 0 0 5px var(--primary-color);
+   position: relative;
+   display: inline-block;
+   margin: 20px 0;
+   padding: 5px;
+   
+   /* 재생 시간을 0.6s로 단축하여 매우 빠르게 치직거림 */
+   animation: glitch-color 1s infinite steps(1);
+}
+
+pre::before {
+
+   content: attr(data-text);
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   color: var(--primary-color);
+   background: var(--bg-dark);
+   
+   /* 0.6s 주기로 아주 빠르게 찢어짐 */
+   animation: glitch-horizontal 1s infinite steps(1);
+   opacity: 0.9;
+   z-index: -1;
+
+}
+
+/* 특정 클래스나 요소만 막고 싶을 때 */
+.no-drag {
+   /* 사용자가 글자를 긁어서 복사하는 것이 불가능해지므로, 정보 전달이 중요한 페이지라면 신중하게 결정 */
+   user-select: none;
+}
+
+.container {
+   overflow-y: auto; /* 스크롤 기능은 활성화 */
+   /* IE 및 Edge를 위한 설정 */
+   -ms-overflow-style: none;
+   /* 파이어폭스를 위한 설정 */
+   scrollbar-width: none;
+
+   /* width: max-content; */
+   width: max-content;
+   min-width: 470px; /* 최소 너비 고정 */
+
+   /* 변수를 가져와서 투명도(0.3)만 따로 지정 가능! */
+   box-shadow: 0 0 20px rgba(var(--rgb-value), 0.3);
+   border: 2px solid var(--primary-color);
+}
+
+.stats {
+   padding: 1em .5em;
+   border-top: 1px solid var(--primary-color);
+}
+
+.stats div, .stats span {
+   /* 처음엔 글자를 보이지 않게 설정 */
+   color: transparent;
+   position: relative;
+   /* text-shadow: none !important; */
+}
+
+/* 타이핑된 글자만 보이게 함 */
+.revealed {
+   color: var(--primary-color) !important; /* 기본 글자색 */
+   /* text-shadow: 0 0 10px var(--primary-color) !important; */
+   display: inline;
+}
+
+/* 개별 글자 처리 */
+.char {
+   display: inline; /* inline-block 대신 inline 사용 */
+   color: transparent;
+   text-shadow: none !important;
+}
+
+
+/* ENRAGED 전용: 보일 때만 깜빡임 적용 */
+/* ENRAGED 깜빡임 시 그림자 유지 */
+.blink.revealed {
+   animation: blinker 1s linear infinite;
+   color: #ff4444 !important;
+   text-shadow: 0 0 15px #ff4444 !important;
+}
+
+/* 기존 블링크 효과 */
+.blink {
+   animation: blinker 1s linear infinite;
+   color: #ff4444; /* 강조색 */
+   font-weight: bold;
+}
+
+.system-msg {
+   font-size: 10px;
+   color: #444;
+   margin-top: 15px;
+   text-shadow: none; /* 하단 시스템 메시지는 눈부시지 않게 */
+}
+
+.typing-container {
+   display: inline-block;
+} 
+
+
+.typing-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100%; /* 부모는 전체 너비 사용 */
+   /* height: 100vh; */
+}
+
+.typing-text {
+   /* font-size: 24px; */
+   white-space: nowrap;      /* 한 줄로 유지 */
+   overflow: hidden;         /* 글자가 나타나는 효과를 위해 넘치는 부분 숨김 */
+   border-right: 3px solid #000; /* 타이핑 커서 표현 */
+   width: 0;                 /* 처음에는 너비를 0으로 설정 */
+   
+   /* 애니메이션 적용: 타이핑(3초), 커서 깜빡임(0.7초) */
+   animation:
+      typing 3.5s steps(30, end) forwards,
+      blink-caret 0.7s step-end infinite;
+}
+
+.typing-text2 {
+   white-space: nowrap;
+   overflow: hidden;
+   border-right: 3px solid orange;
+
+   /* JS에서 받을 변수 적용 (기본값은 0) */
+   width: calc(var(--char-count) * 1ch);
+   
+   animation:
+      typing2 2.5s steps(var(--char-count)) forwards, /* 글자 수만큼 스텝 분할 */
+      blink-caret2 0.7s step-end infinite;
+}
+
+.dialogue-box {
+   width: 300px;
+   font-family: 'monospace';
+   line-height: 1.5;
+   position: relative;
+}
+
+/* 타이핑 커서 */
+.cursor {
+   display: inline-block;
+   width: 8px;
+   height: 1.1em;
+   background: var(--primary-color);
+   vertical-align: text-bottom; /* 기준선을 텍스트 바닥에 맞춤 */
+   margin-left: 2px;
+   animation: blinker 0.7s step-end infinite;
+   
+   /* 커서가 나타나도 줄이 늘어나지 않게 고정 */
+   line-height: 1;
+   position: absolute;
+   pointer-events: none;
+}

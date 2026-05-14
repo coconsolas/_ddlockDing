@@ -1,0 +1,61 @@
+/* 1. 수평으로 더 넓고 빠르게 찢어지는 애니메이션 */
+@keyframes glitch-horizontal {
+   0% { clip-path: inset(20% 0 50% 0); transform: translate(-20px, 0); opacity: 1; }
+   10% { clip-path: inset(80% 0 10% 0); transform: translate(20px, 0); }
+   20% { clip-path: inset(10% 0 70% 0); transform: translate(-15px, 0); }
+   30% { clip-path: inset(50% 0 20% 0); transform: translate(15px, 0); }
+   40% { clip-path: inset(0% 0 0% 0); transform: translate(0, 0); opacity: 1; }
+   /* 40% 이후부터 100%까지는 정지 상태로 두어 '간헐적인' 느낌을 줌 */
+   100% { clip-path: inset(0% 0 0% 0); transform: translate(0, 0); opacity: 1; }
+}
+
+/* 2. RGB Split 색상 노이즈 속도 강화 */
+@keyframes glitch-color {
+   0% { text-shadow: 8px 0 #ff0000, -8px 0 #00ffff; }
+   15% { text-shadow: -8px 0 #ff0000, 8px 0 #00ffff; }
+   30% { text-shadow: 15px 0 #ff0000, -15px 0 #00ffff; }
+   45% { text-shadow: 0 0 transparent; }
+   100% { text-shadow: 0 0 transparent; }
+}
+
+@keyframes blinker {
+   50% {
+      opacity: 0;
+   }
+}
+
+@keyframes flicker {
+   0% {
+      opacity: 0.95;
+   }
+   100% {
+      opacity: 1;
+   }
+}
+
+/* 글자가 하나씩 나타나는 애니메이션 */
+@keyframes typing {
+   from { width: 0; }
+   to { width: 100%; }
+}
+
+/* 커서가 깜빡이는 애니메이션 */
+@keyframes blink-caret {
+   from, to { border-color: transparent; }
+   50% { border-color: orange; } /* 커서 색상 */
+}
+
+@keyframes typing2 {
+   from { width: 0; }
+   to { width: calc(var(--char-count) * 1ch); }
+}
+
+/* 커서 깜빡임은 동일 */
+@keyframes blink-caret2 {
+   from, to { border-color: transparent; }
+   50% { border-color: orange; }
+}
+
+@keyframes blink-wrap {
+   50% { opacity: 0; }
+}
