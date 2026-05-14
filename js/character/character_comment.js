@@ -29,7 +29,7 @@ const _character_info = {
       <div>[ADDITIONAL INFO: Baxter Society, Drifter]</div>
       <div class="quotes"><b>TIME TO PULL OUT THE BIG GUNS</b></div>
     `,
-    color: '255, 51, 51'
+    color: '168, 73, 73'
   },
 
 
@@ -108,6 +108,31 @@ const _character_info = {
       <div class="quotes"><b>CHECKING IN.</b></div>
     `,
     color: `212, 175, 55`
+  },
+
+  apollo: {
+    name: "APOLLO",
+    ascii_art: `
+                   _   _     
+ __,  ,_    _,_ //  //  _,_
+(_/(__/_)__(_/_(/__(/__(_/ 
+     /                     
+    /                      
+                           
+    `,
+    characterInfo: `
+      <div>[STATUS: <span class="blink">FINESSE</span>]</div>
+      <div>[WEAPON: PRIDE OF IXIA]</div>
+      <br />
+      <div>> 1. DISENGAGING SIGIL</div>
+      <div>> 2. RIPOSTE</div>
+      <div>> 3. FLAWLESS ADVANCE</div>
+      <div>> 4. ITANI LO SHAN</div>
+      <br />
+      <div>[ADDITIONAL INFO: IXIA]</div>
+      <div class="quotes"><b>!! ITANI LO SHAN !!</b></div>
+    `,
+    color: '226, 45, 0',
   }
 };
 

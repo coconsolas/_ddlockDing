@@ -145,6 +145,33 @@
    100% { text-shadow: 0 0 5px #d4af37; }
 }
 
+/* APOLLO */
+@keyframes glitch-slash {
+   0%   { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
+   3%   { clip-path: inset(40% 0 40% 0); transform: translate(5px, 0); }
+   4%   { clip-path: inset(0 0 0 0); transform: translate(-5px, 0); }
+   5%   { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
+   /* 이후 긴 정지 - 다음 베기까지 여유 */
+   100% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
+}
+
+@keyframes glitch-riposte {
+   0%   { filter: brightness(1) saturate(1); }
+   2%   { filter: brightness(6) saturate(0) contrast(3); }
+   3%   { filter: brightness(1) saturate(1); }
+   50%  { filter: brightness(1) saturate(1); }
+   52%  { filter: brightness(4) saturate(0); }
+   53%  { filter: brightness(1) saturate(1); }
+   100% { filter: brightness(1) saturate(1); }
+}
+
+@keyframes glitch-timeslow {
+   0%   { text-shadow: 0 0 5px var(--primary-color); letter-spacing: 0px; }
+   10%  { text-shadow: 6px 0 #00cfff, -6px 0 #ff4488; letter-spacing: 2px; }
+   20%  { text-shadow: -4px 0 #00cfff, 4px 0 #ff4488; letter-spacing: 1px; }
+   30%  { text-shadow: 0 0 5px var(--primary-color); letter-spacing: 0px; }
+   100% { text-shadow: 0 0 5px var(--primary-color); letter-spacing: 0px; }
+}
 /* shiv - 기존 좌우 glitch */
 .char-shiv pre {
    animation: glitch-color 1s infinite steps(1);
@@ -173,4 +200,11 @@
 }
 .char-doorman pre::before {
    animation: glitch-portal 8s infinite linear;
+}
+
+.char-apollo pre {
+   animation: glitch-riposte 5s infinite, glitch-timeslow 8s infinite;
+}
+.char-apollo pre::before {
+   animation: glitch-slash 5s infinite steps(1);
 }
