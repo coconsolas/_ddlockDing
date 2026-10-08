@@ -2,6 +2,8 @@ const ascii_ele = document.querySelector("pre");
 ascii_ele.dataset.text = currentChar.ascii_art;
 ascii_ele.textContent = currentChar.ascii_art;
 
+document.title = `${currentChar.name} - DEADLOCK ASCII`;
+
 document.documentElement.style.setProperty('--rgb-value', currentChar.color);
 
 const container = document.getElementById("stats-container");
