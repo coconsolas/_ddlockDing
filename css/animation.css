@@ -118,31 +118,60 @@
    100% { filter: brightness(1); }
 }
 
-/* doorman */
+/* doorman — 정중한 호텔 직원, 수상한 문 */
 @keyframes glitch-portal {
-   0%   { transform: scaleX(1) skewX(0deg); filter: hue-rotate(0deg); }
-   10%  { transform: scaleX(1.05) skewX(3deg); filter: hue-rotate(90deg); }
-   20%  { transform: scaleX(0.95) skewX(-3deg); filter: hue-rotate(180deg); }
-   30%  { transform: scaleX(1) skewX(0deg); filter: hue-rotate(270deg); }
-   100% { transform: scaleX(1) skewX(0deg); filter: hue-rotate(360deg); }
-}
-
-@keyframes glitch-dimension {
-   0%   { opacity: 1; letter-spacing: 0; }
-   5%   { opacity: 0; letter-spacing: 10px; }
-   6%   { opacity: 1; letter-spacing: 0; }
-   50%  { opacity: 1; letter-spacing: 0; }
-   55%  { opacity: 0.3; letter-spacing: -2px; }
-   56%  { opacity: 1; letter-spacing: 0; }
-   100% { opacity: 1; letter-spacing: 0; }
+   0%, 82%, 100% {
+      clip-path: inset(0 49% 0 49%);
+      opacity: 0;
+      transform: scaleX(0.7);
+      filter: brightness(1);
+   }
+   /* 문틈이 열리기 시작 */
+   85% {
+      clip-path: inset(0 42% 0 42%);
+      opacity: 0.8;
+      transform: scaleX(0.9);
+      filter: brightness(1.4);
+   }
+   /* 문이 열리며 안쪽의 빛이 드러남 */
+   89%, 94% {
+      clip-path: inset(0 0 0 0);
+      opacity: 1;
+      transform: scaleX(1);
+      filter: brightness(1.7);
+   }
+   /* 문이 다시 닫힘 */
+   97% {
+      clip-path: inset(0 46% 0 46%);
+      opacity: 0.5;
+      transform: scaleX(0.8);
+      filter: brightness(1.2);
+   }
 }
 
 @keyframes glitch-uncanny {
-   0%   { text-shadow: 0 0 5px #d4af37; }
-   25%  { text-shadow: 0 0 20px #d4af37, 15px 0 #ff6600, -15px 0 #4400ff; }
-   50%  { text-shadow: 0 0 5px #d4af37; }
-   75%  { text-shadow: 0 0 30px #ffffff, 0 0 60px #d4af37; }
-   100% { text-shadow: 0 0 5px #d4af37; }
+   0%, 100% {
+      text-shadow: 0 0 5px #d4af37;
+      letter-spacing: 0;
+      opacity: 1;
+   }
+   /* 호출 벨이 울리는 듯한 금빛 섬광 */
+   12% {
+      text-shadow: 0 0 18px #fff3c4, 0 0 34px #d4af37;
+      letter-spacing: 1px;
+      opacity: 1;
+   }
+   14% {
+      text-shadow: 0 0 5px #d4af37;
+      letter-spacing: 0;
+   }
+   /* 문 너머의 기묘한 잔광 */
+   88% {
+      text-shadow: 0 0 8px #d4af37, 0 0 18px #8b6bff;
+   }
+   94% {
+      text-shadow: 0 0 20px #fff3c4, 0 0 38px #8b6bff;
+   }
 }
 
 /* APOLLO */
@@ -228,10 +257,11 @@
 }
 
 .char-doorman pre {
-   animation: glitch-uncanny 6s infinite, glitch-uncanny 4s infinite;
+   animation: glitch-uncanny 6s infinite;
 }
+
 .char-doorman pre::before {
-   animation: glitch-portal 8s infinite linear;
+   animation: glitch-portal 6s infinite steps(1);
 }
 
 .char-apollo pre {
